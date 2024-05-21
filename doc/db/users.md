@@ -3,12 +3,12 @@
 database `dziura`, collection `users`
 
 
-```json
+```ts
 {
   "_id": ObjectID,
   "username": string,
   "email": string,
-  social_links:[
+  "social_links":[
     {
       "type": string,
       "content": string

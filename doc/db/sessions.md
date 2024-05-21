@@ -3,13 +3,13 @@
 database `dziura`, collection `sessions`
 
 
-```json
+```ts
 {
   "_id": ObjectID,
   "user": ObjectID,
   "start": number,
   "expires": number,
-  active: boolean
+  "active": boolean
 }
 ```
 
