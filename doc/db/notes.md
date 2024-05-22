@@ -1,20 +1,17 @@
-# Database schema for offers
+# Database schema for notes
 
-database `dziura`, collection `offers`
+database `dziura`, collection `notes`
 
 
 ```ts
 {
   "_id": ObjectID, // ID of request
+  "approved": bool, // has it been approved by an admin
   "user": ObjectID, // who posted it
   "created": number, // UNIX timestamp - date of creation
   "title": string, // title of the request
   "subject": string, // school subject, must be one of the available subjects, is checked on backend
   "content": string, // content of the request, as typed by user
-  "daterange": {
-    "from": number, // since when is the offer applicable
-    "to": number, // until when will it be
-  },
   "attachments":{
       "filename": string, // name of the attachment
       "url": string, // URL of attachment after uploading

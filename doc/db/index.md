@@ -6,6 +6,7 @@
 - [`sessions`](./sessions.md)
 - [`requests`](./requests.md)
 - [`offers`](./offers.md)
+- [`notes`](./notes.md)
 
 
 ## Global assumptions
