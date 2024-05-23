@@ -7,6 +7,7 @@
 - [`requests`](./requests.md)
 - [`offers`](./offers.md)
 - [`notes`](./notes.md)
+- [`subjects`](./subjects.md)
 
 
 ## Global assumptions

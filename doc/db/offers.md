@@ -10,6 +10,7 @@ database `dziura`, collection `offers`
   "created": number, // UNIX timestamp - date of creation
   "title": string, // title of the request
   "subject": string, // school subject, must be one of the available subjects, is checked on backend
+  "topic": ObjectID|undefined, // optional topic ID
   "content": string, // content of the request, as typed by user
   "daterange": {
     "from": number, // since when is the offer applicable

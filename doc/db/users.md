@@ -9,6 +9,7 @@ database `dziura`, collection `users`
   "username": string, // unique username
   "created": number, // UNIX timestamp - date of creation
   "email": string, // e-mail address
+  "verified": bool, // is the user verified for access by email or admin approval
   "password":{ // secure authentication data
     "hash": string, // SHA256 hash of the password + the salt
     "salt": string // salt used for this user
