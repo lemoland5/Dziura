@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "node app"
+    "test": "node app",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint": "prettier -c .",
+    "lint:fix": "prettier -w ."
   },
   "author": "",
   "license": "ISC",
@@ -11,8 +15,10 @@
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.10",
+    "eslint": "^9.3.0",
     "express": "^4.19.2",
     "mongodb": "^6.6.2",
-    "mongoose": "^8.4.0"
+    "mongoose": "^8.4.0",
+    "prettier": "^3.2.5"
   }
 }
