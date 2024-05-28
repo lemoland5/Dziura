@@ -4,7 +4,7 @@ const url = process.env.DZIURA_DB;
 const db_utilities = require("../../lib/db_utilities");
 
 module.exports = async (req, res) => {
-    const db = await db_utilities.get_db();
+  const db = await db_utilities.get_db();
   const users_collection = db.collection("users");
   //check if user exists
   const result = await users_collection.findOne({

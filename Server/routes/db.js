@@ -10,6 +10,4 @@ router.get("/signup", signupRoute);
 
 router.get("/login", loginRoute);
 
-
-
 module.exports = router;
