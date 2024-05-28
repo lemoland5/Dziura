@@ -1,19 +1,11 @@
 const mongo = require("mongodb");
 const sha256 = require("sha256");
 const url = process.env.DZIURA_DB;
+const db_utilities = require("../../lib/db_utilities");
 
 module.exports = async (req, res) => {
-  const client = new mongo.MongoClient(url, {
-    serverApi: {
-      version: mongo.ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    },
-  });
-  await client.connect();
-  const db = client.db("dziura");
+  const db = await db_utilities.get_db();
   const users_collection = db.collection("users");
-
   const result = await users_collection.findOne({ email: req.body.email });
   if (!result) {
     res.status(400).json({ message: "login failed" });
