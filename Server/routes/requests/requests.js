@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   res.status(200).json(result);
 });
 
-router.get("id/:id", async (req, res) => {
+router.get("/id/:id", async (req, res) => {
   const db = await db_utilities.get_db();
   const requests_collection = db.collection("requests");
   const result = await requests_collection.findOne({
