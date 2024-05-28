@@ -62,8 +62,8 @@ router.post("/", async (req, res) => {
     comments: [],
     ratings: [],
   };
-    const result = await offers_collection.insertOne(offer);
-    res.status(200).json(result);
+  const result = await offers_collection.insertOne(offer);
+  res.status(200).json(result);
 });
 
 router.get("/", async (req, res) => {
@@ -94,16 +94,16 @@ router.get("id/:id", async (req, res) => {
 });
 
 router.get("user/:id", async (req, res) => {
-    const db = await db_utilities.get_db();
-    const offers_collection = db.collection("offers");
-    const result = await offers_collection.find({
-        user: new mongo.ObjectId(req.params.id),
-    });
-    if (!result) {
-        res.status(404).json({ message: "Offer not found" });
-        return;
-    }
-    res.status(200).json(result);
+  const db = await db_utilities.get_db();
+  const offers_collection = db.collection("offers");
+  const result = await offers_collection.find({
+    user: new mongo.ObjectId(req.params.id),
+  }).toArray();
+  if (!result) {
+    res.status(404).json({ message: "Offer not found" });
+    return;
+  }
+  res.status(200).json(result);
 });
 
 
