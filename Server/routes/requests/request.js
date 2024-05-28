@@ -1,14 +1,13 @@
 const mongo = require("mongodb");
 const url = process.env.DZIURA_DB;
 const db_utilities = require("../../lib/db_utilities");
+const auth_utilities = require("../../lib/auth_utilities");
 
 //post new request
 module.exports = async (req, res) => {
   const db = await db_utilities.get_db();
   const requests_collection = db.collection("requests");
-  const sessions_collection = db.collection("sessions");
-  const id = new mongo.ObjectId(req.cookies.session);
-  const session = await sessions_collection.findOne({ _id: id })
+  const session = auth_utilities.check_session(db, req.cookies.session)
   if ((session) === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
