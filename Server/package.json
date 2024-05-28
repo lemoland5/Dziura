@@ -13,6 +13,7 @@
     "http-errors": "^2.0.0",
     "mongodb": "^6.6.2",
     "morgan": "^1.10.0",
-    "node-sass": "^9.0.0"
+    "node-sass": "^9.0.0",
+    "sha256": "^0.2.0"
   }
 }

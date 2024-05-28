@@ -2,7 +2,6 @@
 
 database `dziura`, collection `requests`
 
-
 ```ts
 {
   "_id": ObjectID, // ID of request
