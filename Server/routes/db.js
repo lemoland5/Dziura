@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router({ mergeParams: true});
+const router = express.Router({ mergeParams: true });
 
 const signupRoute = require("./auth/signup");
 const loginRoute = require("./auth/login");
@@ -12,10 +12,5 @@ router.post("/signup", signupRoute);
 router.post("/login", loginRoute);
 
 router.use("/request", requestRouter);
-
-
-
-
-
 
 module.exports = router;

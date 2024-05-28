@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   const requests_collection = db.collection("requests");
   const sessions_collection = db.collection("sessions");
   const id = new mongo.ObjectId(req.cookies.session);
-  if(await sessions_collection.findOne({ _id: id }) === null){
+  if ((await sessions_collection.findOne({ _id: id })) === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
