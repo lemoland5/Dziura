@@ -1,5 +1,5 @@
 # Specyfikacja aplikacji korepetycje
-**Jakub Pluczak 2P**
+**Jakub Pluczak 2P (ha tfu)** 
 
 ## Spis treści
 1. [Przeznaczenie aplikacji](#przeznaczenie-aplikacji)
