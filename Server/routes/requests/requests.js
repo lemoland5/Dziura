@@ -33,4 +33,13 @@ router.get("/id/:id", async (req, res) => {
   res.status(200).json(result);
 });
 
+router.get("user/:id", async (req, res) => {
+const db = await db_utilities.get_db();
+  const requests_collection = db.collection("requests");
+  const result = await requests_collection.find({
+    user: req.params.id,
+  });
+    res.status(200).json(result);
+});
+
 module.exports = router;
