@@ -7,6 +7,9 @@ database `dziura`, collection `users`
 {
   "_id": ObjectID, // mongodb builtin type for unique IDs
   "username": string, // unique username
+  "profile_picture": {
+    "url": string
+  }|undefined,
   "created": number, // UNIX timestamp - date of creation
   "email": string, // e-mail address
   "verified": bool, // is the user verified for access by email or admin approval
