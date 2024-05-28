@@ -3,9 +3,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const sassMiddleware = require('node-sass-middleware');
-const cors = require('cors');
+const logger = require('morgan');const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const dbRouter = require('./routes/db');
@@ -48,4 +46,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+//start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
