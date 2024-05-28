@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "lint": "eslint",
+    "prettier": "prettier -c .",
+    "prettier:fix": "prettier -w ."
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -16,5 +19,9 @@
     "node-sass": "^9.0.0",
     "sha256": "^0.2.0"
   },
-  "packageManager": "yarn@4.2.2"
+  "packageManager": "yarn@4.2.2",
+  "devDependencies": {
+    "eslint": "^9.3.0",
+    "prettier": "^3.2.5"
+  }
 }
