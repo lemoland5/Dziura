@@ -8,16 +8,17 @@ module.exports = async (req, res) => {
   const requests_collection = db.collection("requests");
   const sessions_collection = db.collection("sessions");
   const id = new mongo.ObjectId(req.cookies.session);
-  if ((await sessions_collection.findOne({ _id: id })) === null) {
+  const session = await sessions_collection.findOne({ _id: id })
+  if ((session) === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
   const request = {
-    user: req.body.user,
+    user: session.user,
     created: Date.now() / 1000,
     title: req.body.title,
-    subject: req.body.subject,
-    topic: req.body.topic,
+    subject: req.body.subject, // TODO: check if there exists such a subject and topic in `subjects` collection
+    topic: req.body.topic,     //       Ref: (../../../doc/db/subjects.md)
     content: req.body.content,
     attachments: [],
     comments: [],
@@ -25,5 +26,5 @@ module.exports = async (req, res) => {
   };
   //TODO: validate request, attachments logic -> for backend >:3
   const result = await requests_collection.insertOne(request);
-  res.status(200).json(result);
+  res.status(200).json({ "message": "added", id: result.insertedId });
 };

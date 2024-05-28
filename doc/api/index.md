@@ -5,3 +5,5 @@ The API is accessible at `/api/*`, with all request routes signed in as `/*` in 
 ## Metods:
 - [`/api/login`](./login.md)
 - [`/api/signup`](./signup.md)
+- [`/api/requests`](./requests.md)
+
