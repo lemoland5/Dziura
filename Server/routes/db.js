@@ -16,3 +16,5 @@ mongoClient.connect(url, {useNewUrlParser: true}).then( (client) =>
     console.log('Connected...');
     const db = client.db('dziura');
 });
+
+module.exports = router;
