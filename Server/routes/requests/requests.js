@@ -53,7 +53,7 @@ router.get("user/:id", async (req, res) => {
   const requests_collection = db.collection("requests");
   const result = await requests_collection.find({
     user: new mongo.ObjectID(req.params.id),
-  });
+  }).toArray();
   res.status(200).json(result);
 });
 
