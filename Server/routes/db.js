@@ -14,6 +14,6 @@ router.post("/login", loginRoute);
 
 router.use("/requests", requestRouter);
 
-
+router.use("/offers", offersRouter);
 
 module.exports = router;

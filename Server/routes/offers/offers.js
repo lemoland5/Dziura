@@ -106,4 +106,5 @@ router.get("user/:id", async (req, res) => {
     res.status(200).json(result);
 });
 
+module.exports = router;
 
