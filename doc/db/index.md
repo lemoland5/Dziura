@@ -13,6 +13,5 @@
 ## Global assumptions
 - dates are stored as `number` since they are milisecond UNIX timestamps - `Date.now()/1000`
 - IDs are stored as `mongodb.ObjectID`
-- relations are rarely needed, since mongoDB is **not a relational database** muhahahaha
-- <img alt="laughing dziadek kuski" height="25%" src="ganondorf.gif" width="25%"/>
+- relations are rarely needed, since mongoDB is **not a relational database** muhahahaha <img alt="laughing dziadek kuski" height="25%" src="ganondorf.gif" width="25%"/>
 
