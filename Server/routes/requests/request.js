@@ -7,8 +7,8 @@ const auth_utilities = require("../../lib/auth_utilities");
 module.exports = async (req, res) => {
   const db = await db_utilities.get_db();
   const requests_collection = db.collection("requests");
-  const session = auth_utilities.check_session(db, req.cookies.session)
-  if ((session) === null) {
+  const session = auth_utilities.check_session(db, req.cookies.session);
+  if (session === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     created: Date.now() / 1000,
     title: req.body.title,
     subject: req.body.subject, // TODO: check if there exists such a subject and topic in `subjects` collection
-    topic: req.body.topic,     //       Ref: (../../../doc/db/subjects.md)
+    topic: req.body.topic, //       Ref: (../../../doc/db/subjects.md)
     content: req.body.content,
     attachments: [],
     comments: [],
@@ -25,5 +25,5 @@ module.exports = async (req, res) => {
   };
   //TODO: validate request, attachments logic -> for backend >:3
   const result = await requests_collection.insertOne(request);
-  res.status(200).json({ "message": "added", id: result.insertedId });
+  res.status(200).json({ message: "added", id: result.insertedId });
 };

@@ -8,8 +8,8 @@ router.post("/", requestRoute);
 
 router.get("/", async (req, res) => {
   const db = await db_utilities.get_db();
-  const session = auth_utilities.check_session(db, req.cookies.session)
-  if ((session) === null) {
+  const session = auth_utilities.check_session(db, req.cookies.session);
+  if (session === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
@@ -27,8 +27,8 @@ router.get("/", async (req, res) => {
 
 router.get("/id/:id", async (req, res) => {
   const db = await db_utilities.get_db();
-  const session = auth_utilities.check_session(db, req.cookies.session)
-  if ((session) === null) {
+  const session = auth_utilities.check_session(db, req.cookies.session);
+  if (session === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
@@ -45,15 +45,17 @@ router.get("/id/:id", async (req, res) => {
 
 router.get("user/:id", async (req, res) => {
   const db = await db_utilities.get_db();
-  const session = auth_utilities.check_session(db, req.cookies.session)
-  if ((session) === null) {
+  const session = auth_utilities.check_session(db, req.cookies.session);
+  if (session === null) {
     res.status(401).json({ message: "Unauthorized" });
     return;
   }
   const requests_collection = db.collection("requests");
-  const result = await requests_collection.find({
-    user: new mongo.ObjectID(req.params.id),
-  }).toArray();
+  const result = await requests_collection
+    .find({
+      user: new mongo.ObjectID(req.params.id),
+    })
+    .toArray();
   res.status(200).json(result);
 });
 
