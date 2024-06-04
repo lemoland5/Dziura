@@ -9,7 +9,7 @@ async function get_db() {
     },
   });
   await client.connect();
-  return client.db("dziura");
+  return {db: client.db("dziura"), client};
 }
 
 module.exports = {
