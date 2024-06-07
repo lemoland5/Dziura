@@ -8,8 +8,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
-//serve static files like css, js, images
-app.use(express.static("public"));
 //set up view engine -> ejs
 app.set("view engine", "ejs");
 //set up views folder
