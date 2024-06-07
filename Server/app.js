@@ -32,15 +32,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter); // todo: make router that will serve all pages
 app.use("/api", dbRouter);
 
-//todo: better error handling
-app.use((req, res, next) => {
-  const error = new Error("Not found");
-  error.status = 404;
-  next(error);
-});
 
 //start the server
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(port,() => {
   console.log(`Server started on port ${port}`);
 });

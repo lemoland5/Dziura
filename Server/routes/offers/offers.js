@@ -3,7 +3,11 @@ const db_utilities = require("../../lib/db_utilities");
 const router = require("express").Router({ mergeParams: true });
 
 router.post("/", async (req, res) => {
+<<<<<<< Updated upstream
   const {db, client} = await db_utilities.get_db();
+=======
+  const {db, client}= await db_utilities.get_db();
+>>>>>>> Stashed changes
   const offers_collection = db.collection("offers");
   const sessions_collection = db.collection("sessions");
   const id = new mongo.ObjectId(req.cookies.session);
@@ -30,10 +34,15 @@ router.post("/", async (req, res) => {
   const result = await offers_collection.insertOne(offer);
   client.close()
   res.status(200).json(result);
+    await client.close();
 });
 
 router.get("/", async (req, res) => {
+<<<<<<< Updated upstream
   const {db, client} = await db_utilities.get_db();
+=======
+  const {db, client}= await db_utilities.get_db();
+>>>>>>> Stashed changes
   const offers_collection = db.collection("offers");
   const limit = req.query.limit ? parseInt(req.query.limit) : 5;
   const page = req.query.page ? parseInt(req.query.page) : 0;
@@ -45,10 +54,15 @@ router.get("/", async (req, res) => {
     .toArray();
   client.close()
   res.status(200).json(result);
+  await client.close();
 });
 
 router.get("id/:id", async (req, res) => {
+<<<<<<< Updated upstream
   const {db, client} = await db_utilities.get_db();
+=======
+  const {db, client}= await db_utilities.get_db();
+>>>>>>> Stashed changes
   const offers_collection = db.collection("offers");
   const result = await offers_collection.findOne({
     _id: new mongo.ObjectId(req.params.id),
@@ -59,10 +73,15 @@ router.get("id/:id", async (req, res) => {
   }
   client.close()
   res.status(200).json(result);
+    await client.close();
 });
 
 router.get("user/:id", async (req, res) => {
+<<<<<<< Updated upstream
   const {db, client} = await db_utilities.get_db();
+=======
+  const {db, client}= await db_utilities.get_db();
+>>>>>>> Stashed changes
   const offers_collection = db.collection("offers");
   const result = await offers_collection
     .find({
@@ -75,6 +94,7 @@ router.get("user/:id", async (req, res) => {
   }
   client.close()
   res.status(200).json(result);
+  await client.close();
 });
 
 module.exports = router;
