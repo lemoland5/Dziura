@@ -7,6 +7,7 @@ database `dziura`, collection `users`
 {
   "_id": ObjectID, // mongodb builtin type for unique IDs
   "username": string, // unique username
+  "type": "admin"|"teacher"|"student", // enum of available string types
   "profile_picture": {
     "url": string
   }|undefined,
