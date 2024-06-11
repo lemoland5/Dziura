@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     ratings: [],
   };
   const result = await offers_collection.insertOne(offer);
-  client.close()
+await client.close()
   res.status(200).json(result);
 });
 
@@ -43,7 +43,7 @@ router.get("/", async (req, res) => {
     .skip(page * limit)
     .limit(limit)
     .toArray();
-  client.close()
+await client.close()
   res.status(200).json(result);
 });
 
@@ -57,7 +57,7 @@ router.get("id/:id", async (req, res) => {
     res.status(404).json({ message: "Offer not found" });
     return;
   }
-  client.close()
+await client.close()
   res.status(200).json(result);
 });
 
@@ -73,7 +73,7 @@ router.get("user/:id", async (req, res) => {
     res.status(404).json({ message: "Offer not found" });
     return;
   }
-  client.close()
+await client.close()
   res.status(200).json(result);
 });
 
