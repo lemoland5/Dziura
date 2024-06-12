@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj korepetycje
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="d-s.css">
+    <script src="https://kit.fontawesome.com/6aa023538a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <%- include('../src/nav.ejs') %>
+
+    <h3 class="big">Dodaj korepetycje</h3>
+    <form action="">
+  
+      
+
+        <label for="przedmiot">Podaj</label>
+        <input type="text" placeholder="przedmiot" name="przedmiot">
+        <input type="text" placeholder="dział" name="dzial">
+        <input type="text" placeholder="temat" name="temat">
+        <textarea name="opis" placeholder="opis" id="" cols="30" rows="10"></textarea>
+        
+        
+        <button class="kor-sub" type="submit"><p>Dodaj</p> <i class="fa-solid fa-arrow-right"></i></button>
+        
+    </form>
+</body>
+</html>

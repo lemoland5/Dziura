@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="notatki.css">
+</head>
+<body>
+    <%- include('../src/nav.ejs') %>
+
+    <header>Notatki</header>
+    <aside id="add-note-section">
+        <form action="">
+                <input type="text" placeholder="tytuł">
+                <input type="text" placeholder="przedmiot">
+                <textarea name="" id="" cols="30" rows="10" placeholder="opis"></textarea>
+                <input type="image" src="submitpng.png">
+        </form>
+    </aside>
+    <main id="browse-notes-section">
+        <div id="note-search-bar">
+            <input id="search-notes" type="text" placeholder="Szukaj">
+            <img src="Vector.png" alt="">
+            
+        </div>
+
+
+
+        <section id="notes-section">
+
+            <!-- z jakiegoś powodu w formie podaje się przedmiot a nie jest on wyświetlany w notatce -->
+
+            <a href="" class="note">
+                <h3>Wpływ programistów na środowisko</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi laboriosam tenetur libero est minima nulla sunt animi pariatur? Quo ratione iure dolore voluptatibus. Ullam molestias reiciendis, aut nemo rerum blanditiis officia, adipisci esse mollitia animi non consequuntur impedit necessitatibus ipsam?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Zależności między funkcją kwadratową a wzorami Viette'a</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nostrum eaque molestias quis hic laudantium perspiciatis dignissimos porro tenetur nisi cupiditate repudiandae, cumque ab, illo, quam molestiae! Debitis molestias repellendus aut eius eligendi assumenda reiciendis nesciunt totam, dolor natus ipsa?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 1</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsam inventore sit, distinctio doloribus nam voluptates molestias illo animi velit. Provident, quasi deserunt id recusandae blanditiis tempore sit voluptas fuga culpa. Accusantium magnam vitae iste asperiores iure commodi in nemo.</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 2</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam repellat ab dolorum hic atque dolorem impedit quo modi exercitationem, alias, nam veniam officiis voluptatem perferendis, beatae unde neque necessitatibus? Reprehenderit blanditiis excepturi ad, magni unde assumenda recusandae et sint tempora.</p>
+            </a>
+            <a href="" class="note">
+                <h3>Wpływ programistów na środowisko</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi laboriosam tenetur libero est minima nulla sunt animi pariatur? Quo ratione iure dolore voluptatibus. Ullam molestias reiciendis, aut nemo rerum blanditiis officia, adipisci esse mollitia animi non consequuntur impedit necessitatibus ipsam?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Zależności między funkcją kwadratową a wzorami Viette'a</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nostrum eaque molestias quis hic laudantium perspiciatis dignissimos porro tenetur nisi cupiditate repudiandae, cumque ab, illo, quam molestiae! Debitis molestias repellendus aut eius eligendi assumenda reiciendis nesciunt totam, dolor natus ipsa?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 1</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsam inventore sit, distinctio doloribus nam voluptates molestias illo animi velit. Provident, quasi deserunt id recusandae blanditiis tempore sit voluptas fuga culpa. Accusantium magnam vitae iste asperiores iure commodi in nemo.</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 2</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam repellat ab dolorum hic atque dolorem impedit quo modi exercitationem, alias, nam veniam officiis voluptatem perferendis, beatae unde neque necessitatibus? Reprehenderit blanditiis excepturi ad, magni unde assumenda recusandae et sint tempora.</p>
+            </a>
+            <a href="" class="note">
+                <h3>Wpływ programistów na środowisko</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi laboriosam tenetur libero est minima nulla sunt animi pariatur? Quo ratione iure dolore voluptatibus. Ullam molestias reiciendis, aut nemo rerum blanditiis officia, adipisci esse mollitia animi non consequuntur impedit necessitatibus ipsam?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Zależności między funkcją kwadratową a wzorami Viette'a</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nostrum eaque molestias quis hic laudantium perspiciatis dignissimos porro tenetur nisi cupiditate repudiandae, cumque ab, illo, quam molestiae! Debitis molestias repellendus aut eius eligendi assumenda reiciendis nesciunt totam, dolor natus ipsa?</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 1</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsam inventore sit, distinctio doloribus nam voluptates molestias illo animi velit. Provident, quasi deserunt id recusandae blanditiis tempore sit voluptas fuga culpa. Accusantium magnam vitae iste asperiores iure commodi in nemo.</p>
+            </a>
+            <a href="" class="note">
+                <h3>Definicja encji cz. 2</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam repellat ab dolorum hic atque dolorem impedit quo modi exercitationem, alias, nam veniam officiis voluptatem perferendis, beatae unde neque necessitatibus? Reprehenderit blanditiis excepturi ad, magni unde assumenda recusandae et sint tempora.</p>
+            </a>
+        </section>
+
+    </main>
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="log-rej.css">
+</head>
+<body>
+    <%- include('../src/nav.ejs') %>
+
+    <h3 class="big">Rejestracja</h3>
+    <form id="reg" action="">
+        <h3 class="title">Witaj!</h3>
+        <p>Zarejestruj się i dołącz do naszej społeczności!</p>
+        <label for="">Email:</label>
+        <input type="text" name="email">
+        <label for="">Hasło:</label>
+        <input type="text" name="password">
+        <label for="">Powtórz hasło:</label>
+        <input type="text" name="password-rep">
+
+        <button class="b-sub" type="submit" style="text-transform: uppercase;">Zarejestruj</button>
+        <p class="nowy">Masz już konto?<a href="login">Zaloguj się</a></p>
+    </form>
+</body>
+</html>

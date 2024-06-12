@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+* {
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    padding-left: 100px;
+    padding-right: 400px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #012676;
+    margin-bottom: 10px;
+    line-height: 58.09px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header>a>img{
+    visibility: hidden;
+    width: 30px;
+    height: auto;
+}
+
+.gwiazdki {
+    width: fit-content;
+    height: 55px;
+    grid-area: gwiazdy;
+    position: relative;
+}
+
+.star1{
+    background-color: rgb(255, 255, 255);
+    height: 55px;
+    width: 400px;
+    width: 80%;
+}
+
+.star2{
+    background-color: rgb(255, 255, 255);
+    height: 55px;
+    width: 400px;
+    width: 60%;
+}
+
+.star3{
+    background-color: rgb(255, 255, 255);
+    height: 55px;
+    width: 400px;
+    width: 40%;
+}
+
+.star4{
+    background-color: rgb(255, 255, 255);
+    height: 55px;
+    width: 400px;
+    width: 20%;
+}
+
+.star5{
+    background-color: rgb(255, 255, 255);
+    height: 55px;
+    width: 400px;
+    width: 0%;
+}
+
+.gw2{
+    height: 100%;
+    top: -55px;
+    position: relative;
+    z-index: -1;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.wynik {
+    width: 90%;
+    border-top: 7.09px solid #E8E8E8;
+    padding: 1em;
+}
+
+.wynik>h4 {
+    grid-area: nazwa;
+    width: 80%;
+}
+
+.wynik>p {
+    grid-area: tekst;
+}
+
+@media only screen and (max-width: 1100px) {
+    body {
+        padding-left: 10px;
+        padding-right: 40px;
+    }
+    .wynik {
+        width: 100%;
+        margin: auto;
+        border-top: 2px solid #E8E8E8;
+    }
+    h1{
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
+    .gwiazdki {
+        height: 24px;
+    }
+    h4{
+        font-size: 16px;
+        top: -20px;
+        position: relative;
+    }
+    .top{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: -20px;
+    }
+    header>a>img{
+        visibility: visible;
+
+    }
+}

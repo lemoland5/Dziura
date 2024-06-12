@@ -4,16 +4,49 @@ const db_utils = require('../lib/db_utilities')
 
 router.get('/', async (req,res)=>{
     const ejs = "<h1>Welcome to Dziura <%- name %> </h1>"
-    const db = await db_utils.get_db();
+    // const db = await db_utils.get_db();
     let name = null;
     if(req.cookies.session)
     {
-        name = await db.collection('users').findOne({user: req.cookies.session.user}).name;
+        // name = await db.collection('users').findOne({user: req.cookies.session.user}).name;
     }
     name = name || 'Stranger';
-    res.render(ejs, {name: name})
-    db.close();
+    res.render("./public/index.ejs", {name: name})
+    // db.close();
 });
+
+router.get('/login', async (req, res)=>{
+    res.render("./logowanie-rejestracja/login.ejs")
+})
+
+router.get('/register', async (req, res)=>{
+    res.render("./logowanie-rejestracja/rejestracja.ejs")
+})
+
+router.get('/profile', async (req, res)=>{
+    res.render("./profil/profile.ejs")
+})
+
+router.get('/notes', async (req, res)=>{
+    res.render("./notatki/notatki.ejs")
+})
+
+router.get('/competences', async (req, res)=>{
+    res.render("./kompetencje/index.ejs")
+})
+
+router.get('/kor-d', async (req, res)=>{
+    res.render("./korepetycje/kor-d.ejs")
+})
+
+router.get('/kor-s', async (req, res)=>{
+    res.render("./korepetycje/kor-s.ejs")
+})
+
+router.get('/search', async (req, res)=>{
+    res.render("./korepetycje/kor-s.ejs")
+})
+
 router.get('/user/:user', async (req,res)=>{
     //if :user = @me -> get user from session
     const db = db.get_db();
