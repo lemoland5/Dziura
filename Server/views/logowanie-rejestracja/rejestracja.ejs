@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="log-rej.css">
 </head>
 <body>
-    <%- include('../src/nav.ejs') %>
+    <!-- <%- include('../src/nav.ejs') %> -->
 
     <h3 class="big">Rejestracja</h3>
-    <form id="reg" action="">
+    <form id="reg" action="./register/register" method="POST">
         <h3 class="title">Witaj!</h3>
         <p>Zarejestruj się i dołącz do naszej społeczności!</p>
+        <label for="">Nazwa użytkownika:</label>
+        <input type="text" name="username">
         <label for="">Email:</label>
         <input type="text" name="email">
         <label for="">Hasło:</label>

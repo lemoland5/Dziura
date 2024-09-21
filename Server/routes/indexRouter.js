@@ -1,19 +1,23 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const router = express.Router()
 const db_utils = require('../lib/db_utilities')
+const crypto = require('crypto')
+
 
 router.get('/', async (req,res)=>{
-    const ejs = "<h1>Welcome to Dziura <%- name %> </h1>"
-    // const db = await db_utils.get_db();
+    const db = await db_utils.get_db();
     let name = null;
     if(req.cookies.session)
     {
-        // name = await db.collection('users').findOne({user: req.cookies.session.user}).name;
+        name = await db.collection('users').findOne({user: req.cookies.session.user}).name;
     }
     name = name || 'Stranger';
+    // console.log(name);
     res.render("./public/index.ejs", {name: name})
-    // db.close();
+    db.client.close();
 });
+
 
 router.get('/login', async (req, res)=>{
     res.render("./logowanie-rejestracja/login.ejs")
@@ -23,7 +27,48 @@ router.get('/register', async (req, res)=>{
     res.render("./logowanie-rejestracja/rejestracja.ejs")
 })
 
+router.post('/register/register', async(req, res)=>{
+    const db = await db_utils.get_db();
+
+    const salt = crypto.randomBytes(16).toString('base64');
+    const passwordOld = req.body.password;
+
+    const passwordNew = crypto.createHash('sha256').update(passwordOld + salt).digest('base64')
+
+
+    await db.db.collection('users').insertOne(
+        {
+            username: req.body.username,
+            type: "student",
+            profile_picture: undefined,
+            created: Date.now(),
+            email: req.body.email,
+            verified: true,
+            password: {
+                hash: passwordNew,
+                salt: salt
+            },
+            social_links:undefined
+        }
+    )
+
+    db.client.close()
+    res.redirect('../login')
+})
+
 router.get('/profile', async (req, res)=>{
+    const db = await db_utils.get_db();
+
+    let id = null
+    if(req.cookies.session){
+        id = await db.collection('users').findOne({user: req.cookies.session.user})._id;
+    
+    }
+
+    if(!id){
+        res.redirect('./login')
+    }
+
     res.render("./profil/profile.ejs")
 })
 
