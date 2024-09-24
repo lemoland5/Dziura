@@ -4,21 +4,19 @@ const router = express.Router();
 const db_utils = require("../lib/db_utilities");
 const crypto = require("crypto");
 const mongodb = require("mongodb");
+const session_utils = require("../lib/session_utilities")
 
 router.get("/", async (req, res) => {
   const { db, client } = await db_utils.get_db();
   let name = null;
-  console.log(req.cookies);
-  if (req.cookies.session) {
-    const session = await db
-      .collection("sessions")
-      .findOne({ _id: new mongodb.ObjectId(req.cookies.session.toString()) });
-    const user = await db
-      .collection("users")
-      .findOne({ _id: new mongodb.ObjectId(session.user) });
-    name = user.username;
+  console.log(req.cookies); 
+
+  if (!req.cookies.session) {
+    res.redirect('./login')  
   }
-  name = name || "Stranger";
+  const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
+
+  name = user.username || "Stranger";
   console.log(name);
   await client.close();
   res.render("./public/index.ejs", { name: name });
@@ -62,20 +60,32 @@ router.post("/register/register", async (req, res) => {
 });
 
 router.get("/profile", async (req, res) => {
-  const db = await db_utils.get_db();
+  const {db, client} = await db_utils.get_db();
 
-  let id = null;
-  if (req.cookies.session) {
-    id = await db
-      .collection("users")
-      .findOne({ user: req.cookies.session.user })._id;
+
+
+  if (!req.cookies.session) {
+    res.redirect('./login')  
+  }
+  const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
+
+  console.log(user);
+//   const session = await db
+//   .collection("sessions")
+//   .findOne({ _id: new mongodb.ObjectId(req.cookies.session.toString()) });
+//     const user = await db
+//   .collection("users")
+//   .findOne({ _id: new mongodb.ObjectId(session.user) });
+
+
+  const data = {
+    name : user.username,
+    email : user.email,
+    // github : user.social_links["github"].content | undefined,
+    // pictureUrl : user.profile_picture.url | undefined
   }
 
-  if (!id) {
-    res.redirect("./login");
-  }
-
-  res.render("./profil/profile.ejs");
+  res.render("./profil/profile.ejs", {name : data.name, email : data.email});
 });
 
 router.get("/notes", async (req, res) => {

@@ -12,7 +12,7 @@
 <body>
     <%- include('../src/nav.ejs') %>
     <div class="container">
-        <h1>Profil</h1>
+        <h1>Profil (<%= name%>)</h1>
         <div class="prof_nav">
             <a href="./notes">
                 <div>Notatki <img src="arrow.png"></div>
@@ -36,7 +36,7 @@
                 <!-- żółty png pod szablonem, długość zależy od ilości gwiazdek  !!! nie ustawiac na <20% ani >98% !!! -->
                 <img src="empty.png" class="empty">
             </div>
-            <p>Email:</p>
+            <p>Email: <%= email%></p>
             <p>Github:</p>
         </div>
     </div>
