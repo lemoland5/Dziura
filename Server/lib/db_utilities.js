@@ -1,5 +1,5 @@
 const mongo = require("mongodb");
-const url = 'mongodb://127.0.0.1:27017/dziura'
+const url = 'mongodb+srv://dziura:rTyQoMU4Dp1qtxkg@cluster0.nthvuuy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 async function get_db() {
   const client = new mongo.MongoClient(url, {
     serverApi: {

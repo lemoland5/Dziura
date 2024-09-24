@@ -7,7 +7,7 @@ const dbRouter = require("./routes/db");
 const express = require("express");
 const app = express();
 const path = require("path");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 //set up view engine -> ejs
 app.set("view engine", "ejs");
@@ -19,9 +19,9 @@ app.use(morgan("dev"));
 
 app.use(bodyParser.urlencoded({
   extended: true
-}))
+}));
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 //parse incoming requests data to req.body
 app.use(express.json());
