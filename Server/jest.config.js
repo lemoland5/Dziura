@@ -2,6 +2,6 @@
 module.exports = async () => {
   return {
     verbose: true,
-    testTimeout: 30_000_000 // I give up.
+    testTimeout: 30_000_000, // I give up.
   };
 };

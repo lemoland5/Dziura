@@ -9,17 +9,17 @@ module.exports = async (req, res) => {
   const result = await users_collection.findOne({ email: req.body.email });
   if (!result) {
     res
-        // .status(400).json({ message: "login failed" })
-        .redirect('/login')
+      // .status(400).json({ message: "login failed" })
+      .redirect("/login?failed=true");
     return;
   }
   const salt = result.password.salt;
   const hash = sha256(req.body.password + salt);
   if (!(result.password.hash === hash)) {
     res
-        // .status(400).json({ message: "login failed" })
-        .redirect('/login')
-    return
+      // .status(400).json({ message: "login failed" })
+      .redirect("/login?failed=true");
+    return;
   }
 
   // login successful
@@ -30,11 +30,11 @@ module.exports = async (req, res) => {
     expires: Date.now() / 1000 + 3600_0000, // one hour long sessions
   });
 
-  await client.close()
+  await client.close();
 
   res
-      .status(200)
-      // .json({ message: "login successful", id: insert_result.insertedId })
-      .redirect('/')
+    .cookie("session", insert_result.insertedId)
+    .status(200)
+    // .json({ message: "login successful", id: insert_result.insertedId })
+    .redirect("/");
 };
-

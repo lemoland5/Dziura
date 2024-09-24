@@ -1,168 +1,163 @@
-@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url("https://fonts.googleapis.com/css?family=Inter");
 
 body {
-    font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 
-    padding: 2rem;
-    background-color: #012676;
-    color: white;
-    
-
+  padding: 2rem;
+  background-color: #012676;
+  color: white;
 }
 
-form input{
-    background-color: #E5E7EB;
-    height: 75px;
-    width: 460px;
+form input {
+  background-color: #e5e7eb;
+  height: 75px;
+  width: 460px;
 }
 
-form .b-sub{
-    background-color: #F9B521;
-    height: 75px;
-    width: 340px;
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
+form .b-sub {
+  background-color: #f9b521;
+  height: 75px;
+  width: 340px;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
 }
 
-form button, input{
-    border: none;
-    border-radius: 0.4rem;
-    border: 10px;
+form button,
+input {
+  border: none;
+  border-radius: 0.4rem;
+  border: 10px;
 }
 
-form button:hover{
-    cursor: pointer;
+form button:hover {
+  cursor: pointer;
 }
-form button{
-    font-weight: bold;
-}
-
-
-h3{
-    font-size: 48px;
-    font-weight: 900;
-    text-align: center;
+form button {
+  font-weight: bold;
 }
 
-label{
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 10px;
+h3 {
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
 }
 
-p, label{
-    
-    font-size: 24px;
-}
-.title, p{
-    width: 600px;
-}
-label{
-    width: 464px;
-}
-form{
-    
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-    margin-top: 100px;
-}
-a{
-    text-decoration: none;
-    color: white;
-    text-decoration: underline;
+label {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-form h3{
-    margin: 0;
-    text-align: left;
+p,
+label {
+  font-size: 24px;
+}
+.title,
+p {
+  width: 600px;
+}
+label {
+  width: 464px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  margin-top: 100px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  text-decoration: underline;
 }
 
-.nowy{
-    font-size: 16px;
- width: auto;   
-}
-input{
-    margin-bottom: 40px;
+form h3 {
+  margin: 0;
+  text-align: left;
 }
 
-.big{
-    margin-top: 0;
+.nowy {
+  font-size: 16px;
+  width: auto;
+}
+input {
+  margin-bottom: 40px;
 }
 
+.big {
+  margin-top: 0;
+}
 
-
-#reg input{
-        height: 65px;
-    
+#reg input {
+  height: 65px;
 }
 @media only screen and (max-height: 975px) {
-    form{
-        margin-top: 50px;
-    }
+  form {
+    margin-top: 50px;
+  }
 }
 
 @media only screen and (max-height: 865px) {
-    *{
-        scale: 0.950;
+  * {
+    scale: 0.95;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .big,
+  form {
+    margin: 0;
+  }
+  .big {
+    margin-bottom: 30px;
+  }
+  .nowy {
+    margin-bottom: 0;
+  }
 
-    }
-    body{
-        margin: 0;
-        padding: 0;
-    }
-    .big, form{
-        margin: 0;
-    }
-    .big{
-        margin-bottom: 30px;
-    }
-    .nowy{
-        margin-bottom: 0;
-    }
+  input {
+    margin-bottom: 15px;
+  }
 
-    input{
-        margin-bottom: 15px;
-    }
-
-    .b-sub{
-        margin-top: 20px;
-    }
+  .b-sub {
+    margin-top: 20px;
+  }
 }
 
-@media only screen and (max-width: 780px) {.big{
+@media only screen and (max-width: 780px) {
+  .big {
     display: none;
-}}
+  }
+}
 
 @media only screen and (max-width: 620px) {
-    *{
-        scale: 0.850;
+  * {
+    scale: 0.85;
+  }
+  form {
+    width: 400px;
+  }
 
-    }
-    form{
-        width: 400px;
-    }
-    
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 120px;
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 120px;
+  }
 }
 
 @media only screen and (max-height: 650px) {
-    body{
-        margin-top: 0;
-    }
+  body {
+    margin-top: 0;
+  }
 }
 
 @media only screen and (max-height: 460px) {
-    body{
-        margin-top: -100px;
-    }
+  body {
+    margin-top: -100px;
+  }
 }
-

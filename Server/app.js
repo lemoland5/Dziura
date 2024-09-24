@@ -7,7 +7,7 @@ const dbRouter = require("./routes/db");
 const express = require("express");
 const app = express();
 const path = require("path");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 //set up view engine -> ejs
 app.set("view engine", "ejs");
@@ -17,9 +17,11 @@ app.set("views", path.join(__dirname, "views"));
 //log requests to the console
 app.use(morgan("dev"));
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 
 app.use(bodyParser.json());
 

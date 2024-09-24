@@ -11,11 +11,11 @@ module.exports = async (req, res) => {
     $or: [{ username: req.body.username }, { email: req.body.email }],
   });
   if (result) {
-    res.redirect("/register?exists=true")
+    res.redirect("/register?exists=true");
     return;
   }
   if (req.body.password.length < 9) {
-    res.redirect("/register?tooshort=true")
+    res.redirect("/register?tooshort=true");
     return;
   }
   const salt =
@@ -31,9 +31,9 @@ module.exports = async (req, res) => {
       salt: salt,
     },
     social_links: [],
-    skills: []
+    skills: [],
   };
   const insert_result = await users_collection.insertOne(user);
-  await client.close()
-  res.redirect("/login?created=true")
+  await client.close();
+  res.redirect("/login?created=true");
 };

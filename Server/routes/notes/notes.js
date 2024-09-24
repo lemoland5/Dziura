@@ -3,7 +3,7 @@ const db_utilities = require("../../lib/db_utilities");
 const router = require("express").Router({ mergeParams: true });
 
 router.post("/", async (req, res) => {
-  const {db, client} = await db_utilities.get_db();
+  const { db, client } = await db_utilities.get_db();
   const notes_collection = db.collection("notes");
   const sessions_collection = db.collection("sessions");
   const id = new mongo.ObjectId(req.cookies.session);
@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const {db, client} = await db_utilities.get_db();
+  const { db, client } = await db_utilities.get_db();
   const notes_collection = db.collection("notes");
   const limit = req.query.limit ? parseInt(req.query.limit) : 5;
   const page = req.query.page ? parseInt(req.query.page) : 0;
@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/id/:id", async (req, res) => {
-  const {db, client} = await db_utilities.get_db();
+  const { db, client } = await db_utilities.get_db();
   const notes_collection = db.collection("notes");
   const result = await notes_collection.findOne({
     _id: new mongo.ObjectId(req.params.id),
@@ -59,7 +59,7 @@ router.get("/id/:id", async (req, res) => {
 });
 
 router.get("/user/:id", async (req, res) => {
-  const {db, client} = await db_utilities.get_db();
+  const { db, client } = await db_utilities.get_db();
   const notes_collection = db.collection("notes");
   const result = await notes_collection.find({
     user: req.params.id,

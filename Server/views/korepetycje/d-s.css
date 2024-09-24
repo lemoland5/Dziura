@@ -1,194 +1,173 @@
-@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url("https://fonts.googleapis.com/css?family=Inter");
 
 body {
-    font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 
-    padding: 2rem;
-    background-color: white;
+  padding: 2rem;
+  background-color: white;
 
-    margin: 0;
-
+  margin: 0;
 }
 
 form {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: auto;
-    margin-top: 180px;
-    margin: auto;
+  position: static;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: auto;
+  margin-top: 180px;
+  margin: auto;
 }
 
 .big {
-    color: #012676;
-    font-weight: 900;
-    margin-top: 0;
-    margin-left: 10%;
-    margin-bottom: 15vh;
-    font-size: 2.5rem;
+  color: #012676;
+  font-weight: 900;
+  margin-top: 0;
+  margin-left: 10%;
+  margin-bottom: 15vh;
+  font-size: 2.5rem;
 }
 
 label {
-    font-weight: 700;
-    font-size: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
-
-
 
 input,
 label,
 textarea {
-    width: 100%;
+  width: 100%;
 }
 
 input {
-    font-weight: 700;
-    color: white;
-    background-color: #D4D4D8;
-    border: none;
-    border-radius: 0.4rem;
-
+  font-weight: 700;
+  color: white;
+  background-color: #d4d4d8;
+  border: none;
+  border-radius: 0.4rem;
 }
 
 input::placeholder {
-    font-weight: 700;
-    color: white;
+  font-weight: 700;
+  color: white;
 }
 
 input {
-    height: 8vh;
-    padding: 1rem;
-    box-sizing: border-box;
+  height: 8vh;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 textarea {
-    font-weight: 700;
-    border-radius: 0.4rem;
-    background-color: #D4D4D8;
-    border: none;
-    padding: 1rem;
-    box-sizing: border-box;
-    height: 18vh;
-    color: white;
+  font-weight: 700;
+  border-radius: 0.4rem;
+  background-color: #d4d4d8;
+  border: none;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 18vh;
+  color: white;
 }
 
 textarea::placeholder {
-    font-weight: 700;
-    color: white;
+  font-weight: 700;
+  color: white;
 }
 
 .kor-sub {
-    width: 346px;
-    height: 64px;
-    border: none;
-    background-color: #F9B521;
-    border-radius: 0.4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-top: 20px;
+  width: 346px;
+  height: 64px;
+  border: none;
+  background-color: #f9b521;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 20px;
 }
 
 .kor-sub p {
-    color: white;
-    font-weight: 500;
+  color: white;
+  font-weight: 500;
 }
 
 label,
 input {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .kor-sub i {
-    color: #012676;
+  color: #012676;
 }
 
 .kor-sub:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 660px) {
-    /* body {
+  /* body {
 
         padding-left: 0rem;
     } */
-    form{
-        width: 80%;
-    }
+  form {
+    width: 80%;
+  }
 }
-
 
 @media only screen and (max-width: 520px) {
-.kor-sub *{
+  .kor-sub * {
     font-size: 0.5rem;
-}
-
-
-
+  }
 }
 @media only screen and (max-width: 660px) {
-    .big {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+  .big {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-
-    }
-
-
-
-    /* form {
+  /* form {
         width: 80%;
     } */
 
-    .kor-sub {
-        width: 40%;
-    }
+  .kor-sub {
+    width: 40%;
+  }
 
-    .big {
-
-        font-size: 1.5rem;
-
-
-    }
+  .big {
+    font-size: 1.5rem;
+  }
 }
 
 @media only screen and (max-height: 690px) {
-    .big {
+  .big {
+    font-size: 1.5rem;
+  }
 
-        font-size: 1.5rem;
-
-
-    }
-
-    label {
-        font-size: 0.8rem;
-    }
-
-
+  label {
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (max-height: 860px) {
-    /* .big {
+  /* .big {
 
        
 
 
     } */
 
-
-/* 
+  /* 
     form {
         width: 80%;
     } */
 
-    .kor-sub {
-        width: 40%;
-        height: 8vh;
-    }
+  .kor-sub {
+    width: 40%;
+    height: 8vh;
+  }
 }

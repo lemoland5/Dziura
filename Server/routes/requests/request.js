@@ -4,7 +4,7 @@ const auth_utilities = require("../../lib/auth_utilities");
 
 //post new request
 module.exports = async (req, res) => {
-  const {db, client} = await db_utilities.get_db();
+  const { db, client } = await db_utilities.get_db();
   const requests_collection = db.collection("requests");
   const session = auth_utilities.check_session(db, req.cookies.session);
   if (session === null) {
@@ -24,6 +24,6 @@ module.exports = async (req, res) => {
   };
   //TODO: validate request, attachments logic -> for backend >:3
   const result = await requests_collection.insertOne(request);
-  client.close()
+  client.close();
   res.status(200).json({ message: "added", id: result.insertedId });
 };
