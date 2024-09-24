@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   client.close();
   res
     .status(200)
-    .json({ message: "Note created", id: insert_result.insertedId });
+    .redirect("../notes");
 };
 
 router.get("/", async (req, res) => {
