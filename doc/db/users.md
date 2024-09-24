@@ -25,6 +25,7 @@ database `dziura`, collection `users`
       "image": string|undefined // image URL, if any.
     }  
   ],
+  "skills":string[] // what is the user capable of teaching
 }
 ```
 
