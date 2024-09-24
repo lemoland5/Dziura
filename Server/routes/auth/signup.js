@@ -11,11 +11,11 @@ module.exports = async (req, res) => {
     $or: [{ username: req.body.username }, { email: req.body.email }],
   });
   if (result) {
-    res.status(409).json({ message: "User already exists" });
+    res.redirect("/register?exists=true")
     return;
   }
   if (req.body.password.length < 9) {
-    res.status(400).json({ message: "Password too short" });
+    res.redirect("/register?tooshort=true")
     return;
   }
   const salt =
@@ -35,7 +35,5 @@ module.exports = async (req, res) => {
   };
   const insert_result = await users_collection.insertOne(user);
   await client.close()
-  res
-    .status(200)
-    .json({ message: "User created", id: insert_result.insertedId });
+  res.redirect("/login?created=true")
 };
