@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   name = user.username || "Stranger";
   console.log(name);
   await client.close();
-  res.render("./public/index.ejs", { name: name });
+  res.render("./index/index.ejs", { name: name });
 });
 
 router.get("/login", async (req, res) => {

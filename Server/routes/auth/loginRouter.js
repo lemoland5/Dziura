@@ -2,8 +2,14 @@ const mongo = require("mongodb");
 const sha256 = require("sha256");
 const url = process.env.DZIURA_DB;
 const db_utilities = require("../../lib/db_utilities");
+const express = require('express')
+const router = express.Router()
 
-module.exports = async (req, res) => {
+router.get("/", async (req, res) => {
+  res.render("./logowanie-rejestracja/login.ejs");
+});
+
+router.post('/', async (req, res) => {
   const { db, client } = await db_utilities.get_db();
   const users_collection = db.collection("users");
   const result = await users_collection.findOne({ email: req.body.email });
@@ -37,4 +43,6 @@ module.exports = async (req, res) => {
     .status(200)
     // .json({ message: "login successful", id: insert_result.insertedId })
     .redirect("/");
-};
+})
+
+module.exports = router

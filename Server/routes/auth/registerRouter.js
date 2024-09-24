@@ -2,8 +2,10 @@ const mongo = require("mongodb");
 const sha256 = require("sha256");
 const url = process.env.DZIURA_DB;
 const db_utilities = require("../../lib/db_utilities");
+const express = require('express')
+const router = express.Router()
 
-module.exports = async (req, res) => {
+router.post(async (req, res) => {
   const { db, client } = await db_utilities.get_db();
   const users_collection = db.collection("users");
   //check if user exists
@@ -36,4 +38,6 @@ module.exports = async (req, res) => {
   const insert_result = await users_collection.insertOne(user);
   await client.close();
   res.redirect("/login?created=true");
-};
+})
+
+module.exports = router;

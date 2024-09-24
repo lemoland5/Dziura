@@ -2,8 +2,8 @@
 const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const indexRouter = require("./routes/indexRouter");
-const dbRouter = require("./routes/db");
+const mainRouter = require("./routes/mainRouter");
+// const dbRouter = require("./routes/db");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -16,7 +16,6 @@ app.set("views", path.join(__dirname, "views"));
 
 //log requests to the console
 app.use(morgan("dev"));
-
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -38,8 +37,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //define routes:
-app.use("/", indexRouter); // todo: make router that will serve all pages
-app.use("/api", dbRouter);
+app.use("/", mainRouter);
+// app.use("/api", dbRouter);
 
 //todo: better error handling
 // app.use((req, res, next) => {
