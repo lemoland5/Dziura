@@ -31,6 +31,7 @@ module.exports = async (req, res) => {
       salt: salt,
     },
     social_links: [],
+    skills: []
   };
   const insert_result = await users_collection.insertOne(user);
   await client.close()
