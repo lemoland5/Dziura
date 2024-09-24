@@ -8,7 +8,7 @@ const offersRouter = require("./offers/offers");
 
 //docs at /doc/db/index.md
 
-router.post("/signup", signupRoute);
+router.post("/register", signupRoute);
 
 router.post("/login", loginRoute);
 

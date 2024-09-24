@@ -8,12 +8,18 @@ module.exports = async (req, res) => {
   const users_collection = db.collection("users");
   const result = await users_collection.findOne({ email: req.body.email });
   if (!result) {
-    res.status(400).json({ message: "login failed" });
+    res
+        // .status(400).json({ message: "login failed" })
+        .redirect('/login')
+    return;
   }
   const salt = result.password.salt;
   const hash = sha256(req.body.password + salt);
   if (!(result.password.hash === hash)) {
-    res.status(400).json({ message: "login failed" });
+    res
+        // .status(400).json({ message: "login failed" })
+        .redirect('/login')
+    return
   }
 
   // login successful
@@ -25,7 +31,10 @@ module.exports = async (req, res) => {
   });
 
   await client.close()
+
   res
-    .status(200)
-    .json({ message: "login successful", id: insert_result.insertedId });
+      .status(200)
+      // .json({ message: "login successful", id: insert_result.insertedId })
+      .redirect('/')
 };
+
