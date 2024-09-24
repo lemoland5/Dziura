@@ -2,7 +2,7 @@ const mongo = require("mongodb");
 const db_utilities = require("../../lib/db_utilities");
 const router = require("express").Router({ mergeParams: true });
 
-router.post("/", async (req, res) => {
+module.exports = async (req, res) => {
   const { db, client } = await db_utilities.get_db();
   const notes_collection = db.collection("notes");
   const sessions_collection = db.collection("sessions");
@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
   }
   const note = {
     user: session.user,
+    approved: true,
     created: Date.now() / 1000,
     title: req.body.title,
     subject: req.body.subject,
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
   res
     .status(200)
     .json({ message: "Note created", id: insert_result.insertedId });
-});
+};
 
 router.get("/", async (req, res) => {
   const { db, client } = await db_utilities.get_db();
