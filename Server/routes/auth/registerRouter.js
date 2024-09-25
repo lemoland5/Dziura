@@ -5,7 +5,11 @@ const db_utilities = require("../../lib/db_utilities");
 const express = require('express')
 const router = express.Router()
 
-router.post(async (req, res) => {
+router.get("/", async (req, res) => {
+  res.render("./logowanie-rejestracja/rejestracja.ejs");
+});
+
+router.post("/", async (req, res) => {
   const { db, client } = await db_utilities.get_db();
   const users_collection = db.collection("users");
   //check if user exists
