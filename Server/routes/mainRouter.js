@@ -10,16 +10,19 @@ const competencesRouter = require('./competences/competencesRotuer')
 const kor_dRouter = require('./korepetycje/kor-dRouter')
 const kor_sRouter = require('./korepetycje/kor-sRouter')
 const searchRouter = require('./search/searchRouter')
+const logoutRouter = require('./auth/logoutRouter')
 
 router.use('/', indexRouter)
 router.use('/login', loginRouter)
 router.use('/register', registerRouter)
+router.use('/logout', logoutRouter)
 router.use('/notes', notesRouter)
 router.use('/profile', profileRouter)
 router.use('/competences', competencesRouter)
 router.use('/kor-d', kor_dRouter)
 router.use('/kor-s', kor_sRouter)
 router.use('/search', searchRouter)
+
 
 
 module.exports = router;
