@@ -27,6 +27,11 @@ router.post('/', async (req, res) => {
       .redirect("/login?failed=true");
     return;
   }
+  if(result.verified != true){
+    // todo dodac jakas wiadomosc
+    res.redirect("/login?unverified=true");
+    return
+  }
 
   // login successful
   const sessions_collection = db.collection("sessions");

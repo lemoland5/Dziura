@@ -5,13 +5,14 @@ const session_utils = require("../../lib/session_utilities")
 router.get("/", async (req, res) => {
     const {db, client} = await db_utils.get_db();
 
-
-
     if (!req.cookies.session) {
         res.redirect('/login')
     }
     const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
 
+    if(user.type != 'admin'){
+        res.redirect('/profile')
+    }
     console.log(user);
 //   const session = await db
 //   .collection("sessions")
@@ -22,15 +23,10 @@ router.get("/", async (req, res) => {
 
     const admin = user.type == 'admin';
 
-    const data = {
-        name : user.username,
-        email : user.email,
-        admin : admin
-        // github : user.social_links["github"].content | undefined,
-        // pictureUrl : user.profile_picture.url | undefined
-    }
 
-    res.render("./profil/profile.ejs", {name : data.name, email : data.email, admin : data.admin});
+
+    // res.render("./admin/admin.ejs");
+    res.json({message : "Halo admin"})
 });
 
 module.exports = router;
