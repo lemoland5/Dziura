@@ -11,6 +11,7 @@ const kor_dRouter = require('./korepetycje/kor-dRouter')
 const kor_sRouter = require('./korepetycje/kor-sRouter')
 const searchRouter = require('./search/searchRouter')
 const logoutRouter = require('./auth/logoutRouter')
+const adminRouter = require('./admin/adminRouter')
 
 router.use('/', indexRouter)
 router.use('/login', loginRouter)
@@ -22,7 +23,6 @@ router.use('/competences', competencesRouter)
 router.use('/kor-d', kor_dRouter)
 router.use('/kor-s', kor_sRouter)
 router.use('/search', searchRouter)
-
-
+router.use('/admin', adminRouter)
 
 module.exports = router;

@@ -26,6 +26,14 @@
             <a href="/logout">
                 <div>Wyloguj <img src="arrow.png"></div>
             </a>
+
+            <% if(admin){ %>
+                <a href="./admin">
+                    <div>Admin <img src="arrow.png"></div>
+                </a>
+
+            <%}%>
+
         </div>
         <div class="prof">
             <img id="pfp" src="placeholder.jpg" alt="profile picture" />
