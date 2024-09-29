@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/verify.css">
+
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <h1>Panel admina </h1> <!-- usuńcie to -->
+    <img src="../images/logo.svg" alt="logo ZSTI">
+</header>
+<form method="post" action="/admin/subjects">
+    <input type="text" placeholder="Przedmiot" name="subject">
+    <input type="text" placeholder="Rozdział" name="chapter">
+    <input type="text" placeholder="Temat" name="topic">
+    <input type="submit" value="Dodaj">
+</form>
+<main>
+    <% data.forEach(element => { %>
+
+        <section>
+            <h1 style="font-size: 2rem;margin: 0">Przedmiot: <%= element['subject'] %></h1>
+            <% for(let i=0; i < element['chapters'].length; i++){%>
+            <h1 style="font-size: 2rem;margin: 0">Rozdział: <%= element['chapters'][i] %> Tematy: <%= element['topics'][i] %></h1>
+            <% } %>
+        </section>
+    <% }) %>
+</main>
+<link rel="stylesheet" href="../nav.css">
+<nav>
+    <hr>
+    <ul>
+        <li><a href=""><img src="/images/Vector1.svg" alt=""></a></li>
+        <li><a href=""><img src="/images/Vector2.svg" alt=""></a></li>
+        <li><a href="../"><img src="/images/Vector3.svg" alt="strona główna"></a></li>
+        <li><a href=""><img src="/images/Vector4.svg" alt="kalendarz"></a></li>
+        <li><a href="../profile"><img src="/images/Vector5.svg" alt="profil uzytkownika"></a></li>
+    </ul>
+</nav>
+</body>
+</html>

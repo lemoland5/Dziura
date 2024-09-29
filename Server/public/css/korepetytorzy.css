@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.mainHeader{
+    display: flex;
+    justify-content: space-between;
+    color: #012676;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: "Inter", sans-serif;
+    padding: 5%;
+    /* position: sticky;
+    top: 0; */
+    background: white;
+}
+.fromMain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+}
+label{
+    font-weight: 700;
+    font-size: 1em;
+    font-family: "Inter", sans-serif;
+    margin-top: 2rem;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 70%;
+}
+form > input,select,label,.a{
+    flex-basis: 100%;
+}
+
+.input-nazwa-uzytkownika {
+    margin-top: 1rem;
+    height: 5em;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0 0.5em;
+    background-color: #D4D4D8;
+    border: none;
+    border-radius: 5px;
+}
+
+select{
+    background-color: #D4D4D8;
+    appearance: none;
+    color: #FFFFFF;
+    margin-top: 0.8rem;
+    border-radius: 5px;
+    border-style: none;
+    height: 3em;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 0.5em;
+}
+.opis{
+    max-width: 100%;
+    background-color: #D4D4D8;
+    color: #FFFFFF;
+    margin-top: 0.8rem;
+    border-radius: 5px;
+    border-style: none;
+    height: 10em;
+    flex-basis: 100%;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+.szukaj{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    width: 12em;
+    height: 3em;
+    background-color: #F9B521;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    border-radius: 5px;
+    border-style: none;
+    box-sizing: border-box;
+}
+.a{
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+    box-sizing: border-box;
+}
+
+img{
+    height: 31px;
+    width: 31px;
+}
+.mainRating{
+    padding: 8%;
+}
+.stars{
+    flex-basis: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerRating{
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    flex-basis: 20%;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+}
+.star{
+    height: 24px;
+    width: 24px;
+    margin: 0.2em;
+    box-sizing: border-box;
+    
+}
+section{
+    border-top: #E8E8E8 2px solid;
+}
+.korepetytor > p{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}
+.korepetytor > footer{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5%;
+}
+.korepetytor > footer > img{
+    height: 24px;
+    width: 24px;
+}
+@media (min-width: 800px){
+    label{
+        font-size: 2em;
+    }
+    select{
+        margin-top: 0.8rem;
+        height: 3em;
+        font-size: 2em;
+        padding: 0.5em;
+    }
+    .opis{
+        margin-top: 1.6rem;
+        font-size: 2em;
+        padding: 0.5em;
+        height: 6em;
+    }
+    .szukaj{
+        font-size: 20px;
+        padding: 1em;
+        width: 12em;
+        height: 3em;
+        font-size: 32px;
+    }
+    img{
+        height: 64px;
+        width: 64px;
+    }
+    .mainHeader{
+        font-size: 48px;
+    }
+    .name{
+        font-size: 24px;
+    }
+    .korepetytor > p{
+        font-size: 20px;
+    }
+    .star{
+        height: 48px;
+        width: 48px;
+        margin: 0.2em;
+        box-sizing: border-box;
+        
+    }
+    .korepetytor > footer > img{
+        height: 48px;
+        width: 48px;
+    }
+}
+@media (min-width: 1000px){
+    .star{
+        height: 65px;
+        width: 65px;
+        margin: 0.2em;
+        box-sizing: border-box;
+        
+    }
+    .korepetytor > footer > img{
+        height: 65px;
+        width: 65px;
+    }
+}

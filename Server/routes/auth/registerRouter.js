@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
       salt: salt,
     },
     social_links: [],
-    skills: [],
+    type: 'student',
   };
   const insert_result = await users_collection.insertOne(user);
   await client.close();
