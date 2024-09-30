@@ -11,95 +11,104 @@ router.get("/", async (req, res) => {
         res.redirect('/login')
     }
     const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
-    res.render("./kompetencje/index.ejs");
 
 
-});
+    const subjects = await db.collection("subjects").find()
 
-router.get("/subjects", async (req, res) => {
-    const {db, client} = await db_utils.get_db();
+    let subjectsData = Array()
 
-    if (!req.cookies.session) {
-        res.redirect('/login')
+    for await (const doc of subjects) {
+        const chapters = await db.collection('chapters').find({subjectId: doc['_id']})
+
+        let chaptersArray = Array()
+        let topicsArray = Array()
+        for await (const dc of chapters) {
+            chaptersArray.push(dc['name'])
+            topicsArray.push(dc['topics'])
+        }
+        subjectsData.push({subject: doc['name'], chapters: chaptersArray, topics: topicsArray})
     }
-    const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
 
-    const competences = await db.collection('competencesSubjects')
 
-    const userCompetences = await competences.findOne({userId: user._id})
-    console.log(userCompetences)
-    res.render("./kompetencje-dodaj/przedmioty.ejs", {data: userCompetences});
+
+    const competencesSubjects = await db.collection('competencesSubjects')
+    const competencesChapters = await db.collection('competencesChapters')
+
+    const userCompetencesSubjects = await competencesSubjects.find({userId: user._id})
+
+    let competencesData = Array()
+
+    for await (const doc of userCompetencesSubjects) {
+        const userCompetencesChapters = await competencesChapters.find({subjectId: doc['_id']})
+
+
+        let chaptersArray = Array()
+        let topicsArray = Array()
+        for await (const dc of userCompetencesChapters) {
+            chaptersArray.push(dc['name'])
+            topicsArray.push(dc['topics'])
+        }
+        competencesData.push({subject: doc['name'], chapters: chaptersArray, topics: topicsArray})
+    }
+
+    res.render("./kompetencje/index.ejs", {competences: competencesData, subjects: subjectsData});
     await client.close()
+
+
 });
-router.post('/subjects', async(req,res)=>{
+
+router.post('/', async(req,res)=>{
     const {db, client} = await db_utils.get_db();
     const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
-    const competences = await db.collection('competences')
+    const competencesSubjects = await db.collection('competencesSubjects')
+    const competencesChapters = await db.collection('competencesChapters')
 
-    const userCompetences = await competences.findOne({userId: new ObjectId(req.body.userId)})
-    const subject = req.body.subject
-    if (!userCompetences){
-        const competencesSubjectSchema = {
-            userId: user._id,
-            subjects: [subject],
-        }
-        await competences.insertOne(competencesSubjectSchema);
-    }else{
-        const subjectsArray = await userCompetences.subjects;
-        subjectsArray.push(subject)
-        await competences.updateOne({userId: new ObjectId(req.body.userId)}, {$set: {subjects: subjectsArray}})
+
+
+
+    const subject = req.body["subject"]
+    const chapter = req.body["chapter"]
+    const topic = req.body["topic"]
+
+    console.log(subject,chapter,topic)
+
+    if(!subject||!chapter||!topic){
+        res.redirect('/competences')
+        return
     }
 
-    res.redirect('/competences/subjects')
+    let subjectFind = await competencesSubjects.findOne({name: subject})
+
+
+
+    if(!subjectFind){
+        await competencesSubjects.insertOne({
+            userId: user._id,
+            name: subject
+        })
+    }
+
+    subjectFind = await competencesSubjects.findOne({name: subject})
+    const chapterFind = await competencesChapters.findOne({name: chapter, subjectId: subjectFind._id})
+
+    if(!chapterFind){
+        await competencesChapters.insertOne({
+            subjectId: subjectFind._id,
+            name: chapter,
+            topics: [topic]
+        })
+    }else{
+        let topicsArray = chapterFind.topics
+        if (!topicsArray.includes(topic)){
+            topicsArray.push(topic)
+            await competencesChapters.findOneAndUpdate({_id: chapterFind._id}, {$set: {topics: topicsArray}})
+        }
+    }
+
+
+    res.redirect('/competences')
     await client.close();
 })
 
-
-router.get("/chapters", async (req, res) => {
-    const {db, client} = await db_utils.get_db();
-
-    if (!req.cookies.session) {
-        res.redirect('/login')
-    }
-    const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
-
-    const competences = await db.collection('competencesChapters')
-
-    const userCompetences = await competences.findOne({userId: new ObjectId(user._id)})
-
-    res.render("./kompetencje-dodaj/dzialy.ejs", {data: userCompetences});
-});
-router.post('/chapters', async(req,res)=>{
-    const {db, client} = await db_utils.get_db();
-    const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
-    const competences = await db.collection('competencesSubjects')
-
-    const userCompetences = await competences.findOne({userId: new ObjectId(req.body.userId)})
-    const subject = req.body.subject
-    if (!userCompetences){
-        const competencesSubjectSchema = {
-            userId: user._id,
-            subjects: [subject],
-        }
-        await competences.insertOne(competencesSubjectSchema);
-    }else{
-        const subjectsArray = await userCompetences.subjects;
-        subjectsArray.push(subject)
-        await competences.updateOne({userId: new ObjectId(req.body.userId)}, {$set: {subjects: subjectsArray}})
-    }
-
-    res.redirect('/competences/subjects')
-    await client.close();
-})
-
-router.get("/topics", async (req, res) => {
-    const {db, client} = await db_utils.get_db();
-
-    if (!req.cookies.session) {
-        res.redirect('/login')
-    }
-    const {session, user} = await session_utils.get_user_data(req.cookies.session, db)
-    res.render("./kompetencje-dodaj/tematy.ejs");
-});
 
 module.exports = router;

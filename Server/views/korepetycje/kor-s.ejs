@@ -16,19 +16,94 @@
     <%- include('../src/nav.ejs') %>
 
     <h1 class="big">Korepetytorzy</h1>
-    <form action="">
-        
-        
+
+
+    <form action="/kor-s" method="post">
         <label for="nazwa-uzytkownika">Szukaj po nazwie użytkownika</label>
         <input type="text" name="nazwa-uzytkownika">
         <label for="przedmiot">Szukaj po preferencjach</label>
-        <input type="text" placeholder="przedmiot" name="przedmiot">
-        <input type="text" placeholder="dział" name="dzial">
-        <input type="text" placeholder="temat" name="temat">
-        
-        
+        <select id="przedmioty" class="korepetytorzyS" onchange="updateChapters()">
+            <option value="" disabled hidden selected>Przedmiot</option>
+            <% let i=0; subjects.forEach(element => { %>
+
+            <option value="<%=i%>">
+                <%= element['subject'] %>
+            </option>
+            <% i++}) %>
+            </main>
+        </select>
+
+
+        <select id="dzial" class="korepetytorzyS" onchange="updateTopics()">
+            <option value="" disabled hidden selected>Dział</option>
+        </select>
+
+        <select name="topic" id="temat" class="korepetytorzyS">
+            <option value="" disabled hidden selected>Temat</option>
+        </select>
+        <input id="subject" hidden name="subject" style="display: none" type="text">
+        <input id="chapter" hidden name="chapter" style="display: none" type="text">
+
         <button class="kor-sub" type="submit"><p>Szukaj</p> <i class="fa-solid fa-arrow-right"></i></button>
-        
+
     </form>
+    <script>
+        // Przekazanie danych o przedmiotach i działach z backendu do frontend
+        const groupedData = <%- JSON.stringify(subjects || null) %>;
+
+        function updateChapters() {
+            const przedmiotSelect = document.getElementById("przedmioty");
+            const dzialSelect = document.getElementById("dzial");
+
+            // Odczytaj wybrane id przedmiotu
+            const selectedPrzedmiotId = przedmiotSelect.value;
+            document.getElementById('subject').value = przedmiotSelect.children[parseInt(selectedPrzedmiotId)].text
+
+
+            // Wyczyść obecne opcje w dziale
+            dzialSelect.innerHTML = '<option value="" disabled hidden selected>Dział</option>';
+            const tematSelect = document.getElementById("temat");
+            tematSelect.innerHTML = '<option value="" disabled hidden selected>Temat</option>'; // Wyczyść tematy
+
+            // Dodaj nowe opcje działów na podstawie wybranego przedmiotu
+            let i = 0;
+            if (groupedData[selectedPrzedmiotId]) {
+                groupedData[selectedPrzedmiotId].chapters.forEach(function(dzial) {
+                    const option = document.createElement("option");
+                    option.value = i; // ID działu
+                    option.textContent = dzial; // Nazwa działu
+                    dzialSelect.appendChild(option);
+                    i++;
+                });
+            }
+        }
+
+        function updateTopics() {
+            const dzialSelect = document.getElementById("dzial");
+            const tematSelect = document.getElementById("temat");
+
+            // Wyczyść obecne opcje w temacie
+            tematSelect.innerHTML = '<option value="" disabled hidden selected>Temat</option>';
+
+            // Odczytaj wybrane id działu
+            let selectedDzialId = dzialSelect.value;
+            let selectedPrzedmiotId = document.getElementById("przedmioty").value;
+
+            document.getElementById('subject').value = document.getElementById("przedmioty").children[parseInt(selectedPrzedmiotId)+1].text
+            document.getElementById('chapter').value = dzialSelect.children[parseInt(selectedDzialId)+1].text
+
+            // Dodaj nowe opcje tematów na podstawie wybranego działu
+            if (groupedData[selectedPrzedmiotId]) {
+
+                groupedData[selectedPrzedmiotId].topics[selectedDzialId].forEach(function(topic) {
+                    const topicOption = document.createElement("option");
+                    topicOption.textContent = topic; // Nazwa tematu
+                    tematSelect.appendChild(topicOption);
+                });
+            }
+        }
+
+
+    </script>
 </body>
 </html>

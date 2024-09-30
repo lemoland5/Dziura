@@ -24,9 +24,9 @@
     <% data.forEach(element => { %>
 
         <section>
-            <h1 style="font-size: 2rem;margin: 0">Przedmiot: <%= element['subject'] %></h1>
+            <h1 style="font-size: 2rem;margin: 0">Przedmiot: <%= element['subject'] %></h1> <br>
             <% for(let i=0; i < element['chapters'].length; i++){%>
-            <h1 style="font-size: 2rem;margin: 0">Rozdział: <%= element['chapters'][i] %> Tematy: <%= element['topics'][i] %></h1>
+            <h3 style="font-size: 2rem;margin: 0">Rozdział: <%= element['chapters'][i] %> <br> Tematy: <%= element['topics'][i] %></h3> <br>
             <% } %>
         </section>
     <% }) %>
@@ -35,7 +35,7 @@
 <nav>
     <hr>
     <ul>
-        <li><a href=""><img src="/images/Vector1.svg" alt=""></a></li>
+        <li><a href="../kor-s"><img src="/images/Vector1.svg" alt=""></a></li>
         <li><a href=""><img src="/images/Vector2.svg" alt=""></a></li>
         <li><a href="../"><img src="/images/Vector3.svg" alt="strona główna"></a></li>
         <li><a href=""><img src="/images/Vector4.svg" alt="kalendarz"></a></li>

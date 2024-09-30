@@ -12,6 +12,7 @@ form input {
   background-color: #e5e7eb;
   height: 75px;
   width: 460px;
+  font-size: 2rem;
 }
 
 form .b-sub {

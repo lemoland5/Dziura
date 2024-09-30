@@ -10,24 +10,108 @@
 </head>
 
 <body>
+<%- include('../src/nav.ejs') %>
 
     <header>
         <h1>Kompetencje</h1>
-        <a href="#"><img src="../images/arrow1.svg"></a>
+        <a href="#">        <img src="/images/logo.svg" alt="logo ZSTI">
+        </a>
     </header>
+    <form action="/competences" method="post">
+        <select id="przedmioty" class="korepetytorzyS" onchange="updateChapters()">
+            <option value="" disabled hidden selected>Przedmiot</option>
+                    <% let i=0; subjects.forEach(element => { %>
 
-    <ul class="kompetencje">
-        <a href="/competences/subjects">
-            <li>Przedmioty</li>
-        </a>
-        <a href="/competences/chapters">
-            <li>Działy</li>
-        </a>
-        <a href="/competences/topics">
-            <li>Tematy</li>
-        </a>
-    </ul>
+                        <option value="<%=i%>">
+                            <%= element['subject'] %>
+                        </option>
+                    <% i++}) %>
+                </main>
+            </select>
 
+
+    <select id="dzial" class="korepetytorzyS" onchange="updateTopics()">
+        <option value="" disabled hidden selected>Dział</option>
+    </select>
+
+    <select name="topic" id="temat" class="korepetytorzyS">
+        <option value="" disabled hidden selected>Temat</option>
+    </select>
+        <input id="subject" hidden name="subject" style="display: none" type="text">
+        <input id="chapter" hidden name="chapter" style="display: none" type="text">
+
+
+        <input type="submit" value="Dodaj">
+    </form>
+    <main>
+        <% competences.forEach(element => { %>
+
+            <section>
+                <h1 style="font-size: 2rem;margin: 0">Przedmiot: <%= element['subject'] %></h1> <br>
+                <% for(let i=0; i < element['chapters'].length; i++){%>
+                    <h3 style="font-size: 2rem;margin: 0">Rozdział: <%= element['chapters'][i] %> <br> Tematy: <%= element['topics'][i] %></h3> <br>
+                <% } %>
+            </section>
+        <% }) %>
+    </main>
+    <script>
+        // Przekazanie danych o przedmiotach i działach z backendu do frontend
+            const groupedData = <%- JSON.stringify(subjects || null) %>;
+
+            function updateChapters() {
+                const przedmiotSelect = document.getElementById("przedmioty");
+                const dzialSelect = document.getElementById("dzial");
+
+                // Odczytaj wybrane id przedmiotu
+                const selectedPrzedmiotId = przedmiotSelect.value;
+                document.getElementById('subject').value = przedmiotSelect.children[parseInt(selectedPrzedmiotId)].text
+
+
+                // Wyczyść obecne opcje w dziale
+                dzialSelect.innerHTML = '<option value="" disabled hidden selected>Dział</option>';
+                const tematSelect = document.getElementById("temat");
+                tematSelect.innerHTML = '<option value="" disabled hidden selected>Temat</option>'; // Wyczyść tematy
+
+                // Dodaj nowe opcje działów na podstawie wybranego przedmiotu
+                let i = 0;
+                if (groupedData[selectedPrzedmiotId]) {
+                    groupedData[selectedPrzedmiotId].chapters.forEach(function(dzial) {
+                        const option = document.createElement("option");
+                        option.value = i; // ID działu
+                        option.textContent = dzial; // Nazwa działu
+                        dzialSelect.appendChild(option);
+                        i++;
+                    });
+                }
+            }
+
+            function updateTopics() {
+                const dzialSelect = document.getElementById("dzial");
+                const tematSelect = document.getElementById("temat");
+
+                // Wyczyść obecne opcje w temacie
+                tematSelect.innerHTML = '<option value="" disabled hidden selected>Temat</option>';
+
+                // Odczytaj wybrane id działu
+                let selectedDzialId = dzialSelect.value;
+                let selectedPrzedmiotId = document.getElementById("przedmioty").value;
+
+                document.getElementById('subject').value = document.getElementById("przedmioty").children[parseInt(selectedPrzedmiotId)+1].text
+                document.getElementById('chapter').value = dzialSelect.children[parseInt(selectedDzialId)+1].text
+
+                // Dodaj nowe opcje tematów na podstawie wybranego działu
+                if (groupedData[selectedPrzedmiotId]) {
+
+                    groupedData[selectedPrzedmiotId].topics[selectedDzialId].forEach(function(topic) {
+                        const topicOption = document.createElement("option");
+                        topicOption.textContent = topic; // Nazwa tematu
+                        tematSelect.appendChild(topicOption);
+                    });
+                }
+            }
+
+        
+    </script>
 </body>
 
 </html>

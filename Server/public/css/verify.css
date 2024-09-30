@@ -30,7 +30,7 @@ main {
 section {
     box-sizing: border-box;
     width: 585px;
-    height: 337px;
+    height: fit-content;
     background-color: #f3f3f3;
     border-radius: 8px;
     padding: 2rem;

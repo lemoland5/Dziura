@@ -151,9 +151,11 @@ router.post('/subjects', async(req,res)=>{
         })
     }else{
         let topicsArray = chapterFind.topics
-        console.log(topicsArray)
-        topicsArray.push(topicToInsert)
-        await chapters.findOneAndUpdate({_id: chapterFind._id}, {$set: {topics: topicsArray}})
+        if (!topicsArray.includes(topicToInsert)){
+            topicsArray.push(topicToInsert)
+            await chapters.findOneAndUpdate({_id: chapterFind._id}, {$set: {topics: topicsArray}})
+        }
+
     }
 
 

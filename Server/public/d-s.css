@@ -37,11 +37,12 @@ label {
 
 input,
 label,
-textarea {
+textarea,
+select{
   width: 100%;
 }
 
-input {
+input, select {
   font-weight: 700;
   color: white;
   background-color: #d4d4d8;
@@ -54,7 +55,7 @@ input::placeholder {
   color: white;
 }
 
-input {
+input,select {
   height: 8vh;
   padding: 1rem;
   box-sizing: border-box;
@@ -96,7 +97,8 @@ textarea::placeholder {
 }
 
 label,
-input {
+input,
+select{
   margin-bottom: 20px;
 }
 
