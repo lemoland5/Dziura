@@ -16,37 +16,41 @@
     <h1>Wyniki wyszukiwania:</h1>
     <a href="#"><img src="../images/arrow1.svg"></a>
     </header>
-
+<% if(data){data.forEach(element =>{%>
+    <a href="/tutor?<%-element['_id']%>">
     <div class="wynik">
         <div class="top">
-            <h4 class="nazwa">uzytkownik1</h4>
-            <div class="gwiazdki">
-                <div class="star5"></div>
-                <img src="../images/stars.svg" class="gw2">
-            </div>
+            <h4 class="nazwa"><%=element['username']%></h4>
+<!--            <div class="gwiazdki">-->
+<!--                <div class="star5"></div>-->
+<!--                <img src="../images/stars.svg" class="gw2">-->
+<!--            </div>-->
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
     </div>
-    <div class="wynik">
-        <div class="top">
-        <h4 class="nazwa">uzytkownik2</h4>
-        <div class="gwiazdki">
-            <div class="star4"></div>
-            <img src="../images/stars.svg" class="gw2">
-        </div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-    </div>
-    <div class="wynik">
-        <div class="top">
-        <h4 class="nazwa">uzytkownik3</h4>
-        <div class="gwiazdki">
-            <div class="star3"></div>
-            <img src="../images/stars.svg" class="gw2">
-        </div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-    </div>
+    </a>
+    <% })}else{ %>
+        <h1>Brak wyników!</h1>
+    <% } %>
+<!--    <div class="wynik">-->
+<!--        <div class="top">-->
+<!--        <h4 class="nazwa">uzytkownik2</h4>-->
+<!--        <div class="gwiazdki">-->
+<!--            <div class="star4"></div>-->
+<!--            <img src="../images/stars.svg" class="gw2">-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>-->
+<!--    </div>-->
+<!--    <div class="wynik">-->
+<!--        <div class="top">-->
+<!--        <h4 class="nazwa">uzytkownik3</h4>-->
+<!--        <div class="gwiazdki">-->
+<!--            <div class="star3"></div>-->
+<!--            <img src="../images/stars.svg" class="gw2">-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>-->
+<!--    </div>-->
 </body>
 
 </html>

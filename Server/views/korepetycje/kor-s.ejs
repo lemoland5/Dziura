@@ -19,8 +19,8 @@
 
 
     <form action="/kor-s" method="post">
-        <label for="nazwa-uzytkownika">Szukaj po nazwie użytkownika</label>
-        <input type="text" name="nazwa-uzytkownika">
+        <label for="username">Szukaj po nazwie użytkownika</label>
+        <input type="text" name="username">
         <label for="przedmiot">Szukaj po preferencjach</label>
         <select id="przedmioty" class="korepetytorzyS" onchange="updateChapters()">
             <option value="" disabled hidden selected>Przedmiot</option>
@@ -57,7 +57,7 @@
 
             // Odczytaj wybrane id przedmiotu
             const selectedPrzedmiotId = przedmiotSelect.value;
-            document.getElementById('subject').value = przedmiotSelect.children[parseInt(selectedPrzedmiotId)].text
+            document.getElementById('subject').value = przedmiotSelect.children[parseInt(selectedPrzedmiotId)+1].text
 
 
             // Wyczyść obecne opcje w dziale
